@@ -1,10 +1,19 @@
 package arraysAndArrayLists;
 
+import java.util.Scanner;
+
 public class SimpleArray {
 	public static void main(String[] args) {
 		int[] intArray;
-
 		intArray = new int[5];
-		System.out.println(intArray[0]);
+		Scanner in = new Scanner(System.in);
+		for (int i = 0; i < intArray.length; i++) {
+
+			intArray[i] = in.nextInt();
+		}
+
+		for (int j = 0; j < intArray.length; j++) {
+			System.out.print(intArray[j] + " ");
+		}
 	}
 }
