@@ -4,6 +4,10 @@ public class MultiDimensionalArray {
 	public static void main(String[] args) {
 		int[][] nums = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
 //		System.out.println(Arrays.toString(nums));
+		toString(nums);
+	}
+
+	static void toString(int[][] nums) {
 		System.out.print("[");
 		for (int i = 0; i < nums.length; i++) {
 			System.out.print("[");
@@ -21,6 +25,5 @@ public class MultiDimensionalArray {
 			}
 		}
 		System.out.println("]");
-
 	}
 }
