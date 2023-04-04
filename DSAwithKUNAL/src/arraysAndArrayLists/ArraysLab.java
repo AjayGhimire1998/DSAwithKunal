@@ -10,8 +10,10 @@ public class ArraysLab {
 		swap(chars, 1, 4);
 		System.out.println(Arrays.toString(chars));
 		reverse(chars);
-		System.out.println(Arrays.toString(chars));
 
+		System.out.println(Arrays.toString(chars));
+		reverseWithSwap(chars);
+		System.out.println(Arrays.toString(chars));
 		ArrayList<Integer> nums = new ArrayList<>();
 		nums.add(1);
 		nums.add(8);
@@ -67,6 +69,16 @@ public class ArraysLab {
 			nums.set(i, nums.get(nums.size() - 1 - i));
 			nums.set(nums.size() - 1 - i, temp);
 
+		}
+	}
+
+	static void reverseWithSwap(char[] chars) {
+		int start = 0;
+		int end = chars.length - 1;
+		while (start < end) {
+			swap(chars, start, end);
+			start++;
+			end--;
 		}
 	}
 }
