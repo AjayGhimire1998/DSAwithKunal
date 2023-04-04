@@ -4,10 +4,13 @@ import java.util.Arrays;
 
 public class ArraysLab {
 	public static void main(String[] args) {
-		char[] chars = { 'a', 'c', 'b', 'y', 'w' };
+		char[] chars = { 'a', 'c', 'b', 'y', 'w', 'a' };
 		System.out.println(getMax(chars));
 		swap(chars, 1, 4);
 		System.out.println(Arrays.toString(chars));
+		reverse(chars);
+		System.out.println(Arrays.toString(chars));
+
 	}
 
 	static char getMax(char[] chars) {
@@ -26,5 +29,14 @@ public class ArraysLab {
 		chars[indexAt] = chars[indexWith];
 		chars[indexWith] = temp;
 
+	}
+
+	static void reverse(char[] chars) {
+		for (int i = 0; i < chars.length / 2; i++) {
+			char temp = chars[i];
+			chars[i] = chars[chars.length - 1 - i];
+			chars[chars.length - 1 - i] = temp;
+
+		}
 	}
 }
