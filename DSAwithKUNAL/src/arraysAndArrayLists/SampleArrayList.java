@@ -38,17 +38,24 @@ public class SampleArrayList<T> {
 	}
 
 	public static void main(String[] args) {
-		ArrayList<Integer> list = new ArrayList<>(10);
+		ArrayList<Integer> list = new ArrayList<>(2);
+
 		list.add(1);
+		list.add(2);
+		list.add(2);
+		list.ensureCapacity(2);
+
 		System.out.println(list.size());
 		System.out.println(list);
-		SampleArrayList<Character> chars = new SampleArrayList<>(10);
+		SampleArrayList<Character> chars = new SampleArrayList<>(2);
 		chars.add('a');
 		chars.add('c');
 		System.out.println(chars.toString());
 		System.out.println(chars.contains('a'));
 		chars.set(1, 'b');
+		chars.add('c');
 		System.out.println(chars.toString());
+
 	}
 
 }
