@@ -21,5 +21,9 @@ public class MultiDemArrayList {
 
 		System.out.println(list);
 
+		list.ensureCapacity(2);
+		list.add(new ArrayList<>(10));
+		System.out.println(list);
+
 	}
 }
