@@ -1,5 +1,7 @@
 package linkedLists;
 
+import java.util.ArrayList;
+
 public class StringLinkyList {
 	StringNode head;
 	StringNode tail;
@@ -41,6 +43,48 @@ public class StringLinkyList {
 
 	StringNode find(String value) {
 		StringNode current = head;
+
+		while (current != null) {
+			if (current.data == value) {
+				return current;
+			}
+
+			current = current.next;
+		}
+		return null;
+	}
+
+	StringLinkyList deleteHead() {
+		if (head == null) {
+			return this;
+		}
+
+		if (head.next != null) {
+			head = head.next;
+		} else {
+			head = null;
+			tail = null;
+		}
+		return this;
+	}
+
+	ArrayList<String> toArray() {
+		ArrayList<String> data = new ArrayList<>();
+		StringNode currentNode = head;
+
+		while (currentNode != null) {
+			data.add(currentNode.data);
+			currentNode = head.next;
+		}
+		return data;
+	}
+
+	public static void main(String[] args) {
+		StringNode nodeHead = new StringNode();
+		StringNode nodeTail = new StringNode("Ajay", nodeHead);
+		StringLinkyList list = new StringLinkyList(nodeHead, nodeTail);
+		list.append("Ajay");
+		System.out.println(list.toArray());
 	}
 
 }
@@ -59,5 +103,9 @@ class StringNode {
 	StringNode(String d, StringNode n) {
 		data = d;
 		next = n;
+	}
+
+	StringNode() {
+
 	}
 }
