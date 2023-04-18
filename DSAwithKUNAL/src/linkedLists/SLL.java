@@ -141,6 +141,17 @@ public class SLL<T> {
 		size++;
 	}
 
+	public T deleteFirst() {
+		T temp = head.getElement();
+		head = head.next;
+		if (head == null) {
+			tail = null;
+		}
+		size--;
+		return temp;
+
+	}
+
 	public ArrayList<T> display() {
 		ArrayList<T> result = new ArrayList<>();
 		Node<T> curr = head;
@@ -157,7 +168,11 @@ public class SLL<T> {
 		list.insertFirst(2);
 		list.insertLast(10);
 		list.insertAtIndex(100, 3);
+		System.out.println(list.display());
+		list.deleteFirst();
 
+		System.out.println(list.display());
+		list.deleteFirst();
 		System.out.println(list.display());
 
 	}
