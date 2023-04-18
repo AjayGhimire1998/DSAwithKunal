@@ -57,6 +57,13 @@ public class SLL<T> {
 		return head.getElement();
 	}
 
+	public T getLast() {
+		if (isEmpty()) {
+			return null;
+		}
+		return tail.getElement();
+	}
+
 	public void insertFirst(T elem) {
 		Node<T> newNode = new Node<>(elem, head);
 		head = newNode;
@@ -69,12 +76,12 @@ public class SLL<T> {
 
 	public void insertLast(T elem) {
 		Node<T> newNode = new Node<>(elem, null);
-		tail.next = newNode;
-		tail = newNode;
 		if (isEmpty()) {
 			head = newNode;
-			tail = newNode;
+		} else {
+			tail.next = newNode;
 		}
+		tail = newNode;
 		size++;
 	}
 
@@ -92,6 +99,9 @@ public class SLL<T> {
 		SLL<Integer> list = new SLL<>();
 		list.insertFirst(1);
 		list.insertFirst(2);
+		list.insertLast(10);
+
 		System.out.println(list.display());
+
 	}
 }
