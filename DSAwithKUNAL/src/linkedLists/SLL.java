@@ -94,6 +94,29 @@ public class SLL<T> {
 	}
 
 	public void insertAtIndex(T elem, int index) {
+//		if (index == 0) {
+//			insertFirst(elem);
+//			return;
+//		}
+//
+//		if (index == getSize()) {
+//			insertLast(elem);
+//			return;
+//		}
+//		if (index > getSize()) {
+//			System.err.println("Index Out of bound");
+//			return;
+//		}
+//
+//		Node<T> curr = getHead();
+//		for (int i = 1; i < index; i++) {
+//			curr = curr.getNext();
+//		}
+//
+//		Node<T> newNode = new Node<>(elem, curr.getNext());
+//		curr.next = newNode;
+//		size++;
+
 		if (index == 0) {
 			insertFirst(elem);
 			return;
@@ -114,7 +137,7 @@ public class SLL<T> {
 		}
 
 		Node<T> newNode = new Node<>(elem, curr.getNext());
-		curr.next = newNode;
+		curr.setNext(newNode);
 		size++;
 	}
 
@@ -133,7 +156,7 @@ public class SLL<T> {
 		list.insertFirst(1);
 		list.insertFirst(2);
 		list.insertLast(10);
-		list.insertAtIndex(100, 4);
+		list.insertAtIndex(100, 3);
 
 		System.out.println(list.display());
 
