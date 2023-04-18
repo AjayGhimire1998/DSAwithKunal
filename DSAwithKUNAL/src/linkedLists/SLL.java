@@ -73,8 +73,8 @@ public class SLL<T> {
 	}
 
 	public void insertFirst(T elem) {
-		Node<T> newNode = new Node<>(elem, head);
-		head = newNode;
+		head = new Node<>(elem, head);
+
 		if (isEmpty()) {
 			tail = head;
 		}
@@ -142,6 +142,10 @@ public class SLL<T> {
 	}
 
 	public T deleteFirst() {
+		if (isEmpty()) {
+			return null;
+		}
+
 		T temp = head.getElement();
 		head = head.next;
 		if (head == null) {
@@ -150,6 +154,27 @@ public class SLL<T> {
 		size--;
 		return temp;
 
+	}
+
+	public T deleteLast() {
+
+		if (getSize() <= 1) {
+			Node<T> temp = head;
+			head = null;
+			return temp.getElement();
+
+		}
+		Node<T> nodeToRemove = null;
+		Node<T> curr = getHead();
+		while (curr != tail) {
+			nodeToRemove = curr;
+			curr = curr.getNext();
+		}
+
+		tail = nodeToRemove;
+		tail.setNext(null);
+		size--;
+		return nodeToRemove.getElement();
 	}
 
 	public ArrayList<T> display() {
@@ -164,15 +189,28 @@ public class SLL<T> {
 
 	public static void main(String[] args) {
 		SLL<Integer> list = new SLL<>();
+
+		list.insertFirst(1);
+		list.insertFirst(2);
+		list.insertLast(10);
+		list.insertFirst(1);
+		list.insertFirst(2);
+		list.insertLast(10);
+		System.out.println(list.display());
+
 		list.insertFirst(1);
 		list.insertFirst(2);
 		list.insertLast(10);
 		list.insertAtIndex(100, 3);
 		System.out.println(list.display());
 		list.deleteFirst();
-
+//
 		System.out.println(list.display());
 		list.deleteFirst();
+		System.out.println(list.display());
+		list.deleteLast();
+		System.out.println(list.display());
+		list.deleteLast();
 		System.out.println(list.display());
 
 	}
