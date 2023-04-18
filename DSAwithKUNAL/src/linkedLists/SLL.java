@@ -161,6 +161,7 @@ public class SLL<T> {
 		if (getSize() <= 1) {
 			Node<T> temp = head;
 			head = null;
+			tail = null;
 			return temp.getElement();
 
 		}
@@ -175,6 +176,31 @@ public class SLL<T> {
 		tail.setNext(null);
 		size--;
 		return nodeToRemove.getElement();
+	}
+
+	public T deleteAtIndex(int index) {
+		if (index == 0) {
+			deleteFirst();
+		}
+
+		if (index == size - 1) {
+			deleteLast();
+		}
+
+		Node<T> curr = getHead();
+		Node<T> currAfter = null;
+		Node<T> currBefore = null;
+
+		for (int i = 1; i <= index; i++) {
+			currBefore = curr;
+			curr = curr.getNext();
+			currAfter = curr.getNext();
+		}
+		currBefore.setNext(currAfter);
+
+		size--;
+		return curr.getElement();
+
 	}
 
 	public ArrayList<T> display() {
@@ -211,6 +237,10 @@ public class SLL<T> {
 		list.deleteLast();
 		System.out.println(list.display());
 		list.deleteLast();
+		System.out.println(list.display());
+		list.deleteLast();
+		System.out.println(list.display());
+		list.deleteAtIndex(0);
 		System.out.println(list.display());
 
 	}
