@@ -160,6 +160,7 @@ public class SLL<T> {
 
 		if (isEmpty()) {
 			head = null;
+			return head.getElement();
 
 		}
 		Node<T> current = head;
@@ -197,6 +198,19 @@ public class SLL<T> {
 		size--;
 		return curr.getElement();
 
+	}
+
+	public Node<T> find(T elem) {
+		Node<T> curr = getHead();
+
+		while (curr != null) {
+			if (curr.getElement() == elem) {
+				return curr;
+			}
+			curr = curr.getNext();
+		}
+
+		return curr;
 	}
 
 	public ArrayList<T> display() {
@@ -239,6 +253,8 @@ public class SLL<T> {
 		System.out.println(list.display());
 		list.deleteAtIndex(0);
 		System.out.println(list.display());
+
+		System.out.println(list.find(2).getNext().getElement());
 
 	}
 }
