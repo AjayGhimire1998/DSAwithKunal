@@ -180,11 +180,11 @@ public class SLL<T> {
 
 	public T deleteAtIndex(int index) {
 		if (index == 0) {
-			deleteFirst();
+			this.deleteFirst();
 		}
 
 		if (index == size - 1) {
-			deleteLast();
+			this.deleteLast();
 		}
 
 		Node<T> curr = getHead();
@@ -240,7 +240,7 @@ public class SLL<T> {
 		System.out.println(list.display());
 		list.deleteLast();
 		System.out.println(list.display());
-		list.deleteAtIndex(0);
+		list.deleteAtIndex(4);
 		System.out.println(list.display());
 
 	}
