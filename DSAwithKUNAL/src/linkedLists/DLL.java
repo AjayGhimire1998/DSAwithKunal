@@ -9,6 +9,10 @@ public class DLL<T> {
 		private Node<T> prev;
 		private Node<T> next;
 
+		Node(T elem) {
+			element = elem;
+		}
+
 		Node(T elem, Node<T> p, Node<T> n) {
 			element = elem;
 			prev = p;
@@ -36,15 +40,9 @@ public class DLL<T> {
 		}
 	}
 
-	private Node<T> head;
-	private Node<T> tail;
+	private Node<T> head = null;
+	private Node<T> tail = null;
 	private int size = 0;
-
-	DLL() {
-		head = new Node<T>(null, null, null);
-		tail = new Node<T>(null, head, null);
-		head.setNext(tail);
-	}
 
 	public T getHead() {
 		if (isEmpty()) {
@@ -65,23 +63,23 @@ public class DLL<T> {
 	}
 
 	public boolean isEmpty() {
-
 		return size == 0;
 	}
 
 	public void insertFirst(T elem) {
-		if (isEmpty()) {
-			head = new Node<T>(elem, null, head);
-			return;
-		}
-		Node<T> newNode = new Node<T>(elem, null, head);
-		head.setPrev(newNode);
+		Node<T> newNode = new Node<T>(elem);
+		newNode.setNext(head);
+		newNode.setPrev(null);
 		head = newNode;
+	}
+
+	public void insertLast(T elem) {
+//		if(is)
 	}
 
 	public ArrayList<T> display() {
 		ArrayList<T> result = new ArrayList<>();
-		Node<T> curr = getHead();
+		Node<T> curr = head;
 		while (curr != null) {
 			result.add(curr.getElement());
 			curr = curr.getNext();
@@ -92,6 +90,9 @@ public class DLL<T> {
 	public static void main(String[] args) {
 		DLL<Integer> list = new DLL<>();
 		list.insertFirst(1);
+		list.insertFirst(2);
+		list.insertFirst(3);
 		System.out.println(list.display());
+//		System.out.println(list.getHead());
 	}
 }
