@@ -1,5 +1,7 @@
 package linkedLists;
 
+import java.util.ArrayList;
+
 public class DLL<T> {
 	// private node class
 	private static class Node<T> {
@@ -44,12 +46,18 @@ public class DLL<T> {
 		head.setNext(tail);
 	}
 
-	public Node<T> getHead() {
-		return head;
+	public T getHead() {
+		if (isEmpty()) {
+			return null;
+		}
+		return head.getElement();
 	}
 
-	public Node<T> getTail() {
-		return tail;
+	public T getTail() {
+		if (isEmpty()) {
+			return null;
+		}
+		return tail.getElement();
 	}
 
 	public int getSize() {
@@ -59,5 +67,31 @@ public class DLL<T> {
 	public boolean isEmpty() {
 
 		return size == 0;
+	}
+
+	public void insertFirst(T elem) {
+		if (isEmpty()) {
+			head = new Node<T>(elem, null, head);
+			return;
+		}
+		Node<T> newNode = new Node<T>(elem, null, head);
+		head.setPrev(newNode);
+		head = newNode;
+	}
+
+	public ArrayList<T> display() {
+		ArrayList<T> result = new ArrayList<>();
+		Node<T> curr = getHead();
+		while (curr != null) {
+			result.add(curr.getElement());
+			curr = curr.getNext();
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		DLL<Integer> list = new DLL<>();
+		list.insertFirst(1);
+		System.out.println(list.display());
 	}
 }
