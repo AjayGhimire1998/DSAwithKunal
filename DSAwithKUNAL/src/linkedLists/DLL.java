@@ -67,23 +67,23 @@ public class DLL<T> {
 	}
 
 	public void insertFirst(T elem) {
-		Node<T> newNode = new Node<T>(elem, null, head);
+		head = new Node<T>(elem, null, head);
 		if (isEmpty()) {
-			head = newNode;
 			tail = head;
 		}
-		head.setPrev(newNode);
-		head = newNode;
+		size++;
 
 	}
 
 	public void insertLast(T elem) {
+		Node<T> newNode = new Node<T>(elem, tail, null);
 		if (isEmpty()) {
-			insertFirst(elem);
+			head = newNode;
+			tail = newNode;
 
 		}
-		Node<T> newNode = new Node<T>(elem, tail, null);
-
+		tail.setNext(newNode);
+		tail = newNode;
 		size++;
 	}
 
@@ -105,10 +105,11 @@ public class DLL<T> {
 
 		System.out.println(list.display());
 
-		list.insertFirst(0);
+		list.insertLast(0);
+		list.insertLast(9);
 		System.out.println(list.display());
 
-		System.out.println(list.getHead());
+		System.out.println(list.getTail());
 
 	}
 }
