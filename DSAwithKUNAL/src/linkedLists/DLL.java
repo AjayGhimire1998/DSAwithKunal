@@ -67,18 +67,24 @@ public class DLL<T> {
 	}
 
 	public void insertFirst(T elem) {
-		Node<T> newNode = new Node<T>(elem);
-		newNode.setNext(head);
-		newNode.setPrev(null);
-		if (head != null) {
-			head.setPrev(newNode);
+		Node<T> newNode = new Node<T>(elem, null, head);
+		if (isEmpty()) {
+			head = newNode;
+			tail = head;
 		}
+		head.setPrev(newNode);
 		head = newNode;
-		size++;
+
 	}
 
 	public void insertLast(T elem) {
-//		if(is)
+		if (isEmpty()) {
+			insertFirst(elem);
+
+		}
+		Node<T> newNode = new Node<T>(elem, tail, null);
+
+		size++;
 	}
 
 	public ArrayList<T> display() {
@@ -96,6 +102,10 @@ public class DLL<T> {
 		list.insertFirst(1);
 		list.insertFirst(2);
 		list.insertFirst(3);
+
+		System.out.println(list.display());
+
+		list.insertFirst(0);
 		System.out.println(list.display());
 
 		System.out.println(list.getHead());
