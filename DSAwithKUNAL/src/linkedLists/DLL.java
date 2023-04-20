@@ -88,6 +88,16 @@ public class DLL<T> {
 	}
 
 	public void insertAt(T elem, int index) {
+
+		if (index == 0) {
+			insertFirst(elem);
+			return;
+		}
+
+		if (index == getSize() - 1) {
+			insertLast(elem);
+			return;
+		}
 		Node<T> curr = head;
 		Node<T> currPrev = null;
 		Node<T> currNext = null;
@@ -99,8 +109,8 @@ public class DLL<T> {
 		}
 
 		Node<T> newNode = new Node<T>(elem);
-		newNode.setNext(currNext);
-		newNode.setPrev(currPrev);
+		currNext.setPrev(newNode);
+		currPrev.setNext(newNode);
 		size++;
 
 	}
@@ -128,7 +138,9 @@ public class DLL<T> {
 
 		System.out.println(list.display());
 
-		System.out.println(list.getTail());
+		list.insertAt(7, 3);
+
+		System.out.println(list.display());
 
 	}
 }
