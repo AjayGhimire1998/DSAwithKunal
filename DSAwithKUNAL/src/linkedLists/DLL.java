@@ -70,7 +70,11 @@ public class DLL<T> {
 		Node<T> newNode = new Node<T>(elem);
 		newNode.setNext(head);
 		newNode.setPrev(null);
+		if (head != null) {
+			head.setPrev(newNode);
+		}
 		head = newNode;
+		size++;
 	}
 
 	public void insertLast(T elem) {
@@ -93,6 +97,8 @@ public class DLL<T> {
 		list.insertFirst(2);
 		list.insertFirst(3);
 		System.out.println(list.display());
-//		System.out.println(list.getHead());
+
+		System.out.println(list.getHead());
+
 	}
 }
