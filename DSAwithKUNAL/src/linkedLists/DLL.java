@@ -79,12 +79,30 @@ public class DLL<T> {
 		Node<T> newNode = new Node<T>(elem, tail, null);
 		if (isEmpty()) {
 			head = newNode;
-			tail = newNode;
+			tail = head;
 
 		}
 		tail.setNext(newNode);
 		tail = newNode;
 		size++;
+	}
+
+	public void insertAt(T elem, int index) {
+		Node<T> curr = head;
+		Node<T> currPrev = null;
+		Node<T> currNext = null;
+
+		for (int i = 1; i < index; i++) {
+			currPrev = curr;
+			currNext = curr.getNext();
+			curr = curr.getNext();
+		}
+
+		Node<T> newNode = new Node<T>(elem);
+		newNode.setNext(currNext);
+		newNode.setPrev(currPrev);
+		size++;
+
 	}
 
 	public ArrayList<T> display() {
@@ -107,6 +125,7 @@ public class DLL<T> {
 
 		list.insertLast(0);
 		list.insertLast(9);
+
 		System.out.println(list.display());
 
 		System.out.println(list.getTail());
