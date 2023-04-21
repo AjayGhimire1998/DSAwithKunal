@@ -67,10 +67,12 @@ public class DLL<T> {
 	}
 
 	public void insertFirst(T elem) {
-		head = new Node<T>(elem, null, head);
-		if (isEmpty()) {
+		Node<T> newNode = new Node<T>(elem, null, head);
+		head = newNode;
+		if (size <= 1) {
 			tail = head;
 		}
+
 		size++;
 
 	}
@@ -105,8 +107,9 @@ public class DLL<T> {
 		}
 
 		Node<T> curr = head;
-		for (int i = 1; i < index; i++) {
+		for (int i = 1; i < index - 1; i++) {
 			curr = curr.getNext();
+			System.out.println(curr.getElement());
 		}
 		Node<T> newNode = new Node<T>(elem, curr.getPrev(), curr.getNext());
 		curr.setNext(newNode);
@@ -127,6 +130,9 @@ public class DLL<T> {
 	public static void main(String[] args) {
 		DLL<Integer> list = new DLL<>();
 		list.insertFirst(1);
+		System.out.println(list.display());
+		System.out.println(list.getHead());
+		System.out.println(list.getTail());
 		list.insertFirst(2);
 		list.insertFirst(3);
 
@@ -139,7 +145,10 @@ public class DLL<T> {
 
 		list.insertFirst(100);
 //		System.out.println(list.getHead());
-		list.insertAt(7, 5);
+		System.out.println(list.getSize());
+		System.out.println(list.display());
+//		list.insertAt(7, 4);
+		System.out.println(list.getSize());
 
 		System.out.println(list.display());
 
