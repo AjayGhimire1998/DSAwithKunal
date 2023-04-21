@@ -117,6 +117,17 @@ public class DLL<T> {
 
 	}
 
+	public void insertAfter(T elem, Node<T> node) {
+		if (node == tail) {
+			insertLast(elem);
+			return;
+		}
+
+		Node<T> newNode = new Node<T>(elem, node, node.getNext());
+		node.setNext(newNode);
+		size++;
+	}
+
 	public ArrayList<T> display() {
 		ArrayList<T> result = new ArrayList<>();
 		Node<T> curr = head;
@@ -131,7 +142,9 @@ public class DLL<T> {
 		DLL<Integer> list = new DLL<>();
 		list.insertFirst(1);
 		System.out.println(list.display());
-		System.out.println(list.getHead());
+		list.insertAfter(2, list.tail);
+		System.out.println(list.display());
+//		System.out.println(list.getHead());
 		System.out.println(list.getTail());
 		list.insertFirst(2);
 		list.insertFirst(3);
@@ -147,7 +160,7 @@ public class DLL<T> {
 //		System.out.println(list.getHead());
 		System.out.println(list.getSize());
 		System.out.println(list.display());
-//		list.insertAt(7, 4);
+		list.insertAt(7, 4);
 		System.out.println(list.getSize());
 
 		System.out.println(list.display());
