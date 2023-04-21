@@ -103,19 +103,13 @@ public class DLL<T> {
 			System.err.println("Index Out of bound");
 			return;
 		}
-		Node<T> curr = head;
-		Node<T> currPrev = null;
-		Node<T> currNext = null;
 
+		Node<T> curr = head;
 		for (int i = 1; i < index; i++) {
-			currPrev = curr;
-			currNext = curr.getNext();
 			curr = curr.getNext();
 		}
-
-		Node<T> newNode = new Node<T>(elem, currPrev, currNext);
-		currPrev.setNext(newNode);
-		currNext.setPrev(newNode);
+		Node<T> newNode = new Node<T>(elem, curr.getPrev(), curr.getNext());
+		curr.setNext(newNode);
 		size++;
 
 	}
@@ -143,8 +137,9 @@ public class DLL<T> {
 
 		System.out.println(list.display());
 
-		list.insertAt(7, 4);
 		list.insertFirst(100);
+//		System.out.println(list.getHead());
+		list.insertAt(7, 5);
 
 		System.out.println(list.display());
 
