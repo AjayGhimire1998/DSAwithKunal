@@ -165,5 +165,10 @@ public class DLL<T> {
 
 		System.out.println(list.display());
 
+		list.insertAfter(23, list.head.getNext().getNext());
+		System.out.println(list.getSize());
+
+		System.out.println(list.display());
+
 	}
 }
