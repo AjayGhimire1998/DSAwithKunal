@@ -125,6 +125,8 @@ public class DLL<T> {
 
 		Node<T> newNode = new Node<T>(elem, node, node.getNext());
 		node.setNext(newNode);
+		node.getNext().getNext().setPrev(newNode);
+//		newNode.setNext(node.getNext());
 		size++;
 	}
 
@@ -165,7 +167,10 @@ public class DLL<T> {
 
 		System.out.println(list.display());
 
-		list.insertAfter(23, list.head.getNext().getNext());
+		list.insertAfter(23, list.head.getNext());
+		System.out.println(list.display());
+
+		System.out.println(list.head.getNext().getNext().getNext().getPrev().getElement());
 		System.out.println(list.getSize());
 
 		System.out.println(list.display());
