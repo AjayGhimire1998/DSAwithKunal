@@ -174,6 +174,7 @@ public class DLL<T> {
 		System.out.println(list.getSize());
 
 		System.out.println(list.display());
+		System.out.println("Not breakiang the streak I guess");
 
 	}
 }
