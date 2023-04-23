@@ -71,10 +71,16 @@ public class CLL<T> {
 
 	}
 
+	public void delete(T elem) {
+		Node<T> curr = head;
+
+	}
+
 	public ArrayList<T> display() {
 		ArrayList<T> result = new ArrayList<>();
 
 		Node<T> curr = head;
+
 		if (head != null) {
 			do {
 				result.add(curr.getElement());
@@ -89,6 +95,8 @@ public class CLL<T> {
 		CLL<Integer> list = new CLL<Integer>();
 		list.insert(1);
 		list.insert(2);
+		list.insert(3);
+		list.insert(4);
 		System.out.println(list.display());
 		System.out.println(list.getHead());
 
