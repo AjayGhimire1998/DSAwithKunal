@@ -72,7 +72,26 @@ public class CLL<T> {
 	}
 
 	public void delete(T elem) {
+
+		if (elem == getHead()) {
+			head = head.getNext();
+			tail.setNext(head);
+		}
+//		if (elem == getTail()) {
+//			tail = head;
+//		}
 		Node<T> curr = head;
+
+		while (curr != tail) {
+//			System.out.println(curr.getElement());
+			if (curr.getElement() == elem) {
+				System.out.println("matched");
+				curr.setNext(curr.getNext().getNext());
+			}
+//			System.out.println(curr.getElement());
+			curr = curr.getNext();
+		}
+		size--;
 
 	}
 
@@ -99,6 +118,8 @@ public class CLL<T> {
 		list.insert(4);
 		System.out.println(list.display());
 		System.out.println(list.getHead());
+		list.delete(2);
+		System.out.println(list.display());
 
 	}
 
