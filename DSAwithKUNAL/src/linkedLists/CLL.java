@@ -1,5 +1,7 @@
 package linkedLists;
 
+import java.util.ArrayList;
+
 public class CLL<T> {
 	private static class Node<T> {
 		private T element;
@@ -61,6 +63,35 @@ public class CLL<T> {
 			tail = newNode;
 			return;
 		}
+
+		tail.setNext(newNode);
+		newNode.setNext(head);
+		tail = newNode;
+		size++;
+
+	}
+
+	public ArrayList<T> display() {
+		ArrayList<T> result = new ArrayList<>();
+
+		Node<T> curr = head;
+		if (head != null) {
+			do {
+				result.add(curr.getElement());
+				curr = curr.getNext();
+			} while (curr != head);
+		}
+
+		return result;
+	}
+
+	public static void main(String[] args) {
+		CLL<Integer> list = new CLL<Integer>();
+		list.insert(1);
+		list.insert(2);
+		System.out.println(list.display());
+		System.out.println(list.getHead());
+
 	}
 
 }
