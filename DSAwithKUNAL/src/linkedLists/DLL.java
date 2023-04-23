@@ -9,9 +9,9 @@ public class DLL<T> {
 		private Node<T> prev;
 		private Node<T> next;
 
-		Node(T elem) {
-			element = elem;
-		}
+//		Node(T elem) {
+//			element = elem;
+//		}
 
 		Node(T elem, Node<T> p, Node<T> n) {
 			element = elem;
