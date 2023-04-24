@@ -84,7 +84,7 @@ public class CLL<T> {
 
 		while (curr != tail) {
 //			System.out.println(curr.getElement());
-			if (curr.getElement() == elem) {
+			if (curr.getNext() == elem) {
 				System.out.println("matched");
 				curr.setNext(curr.getNext().getNext());
 			}
