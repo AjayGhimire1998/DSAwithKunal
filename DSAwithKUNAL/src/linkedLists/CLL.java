@@ -76,17 +76,23 @@ public class CLL<T> {
 		if (elem == getHead()) {
 			head = head.getNext();
 			tail.setNext(head);
+			return;
 		}
 //		if (elem == getTail()) {
 //			tail = head;
 //		}
 		Node<T> curr = head;
 
+		if (curr == null) {
+			return;
+		}
+
 		while (curr != tail) {
 //			System.out.println(curr.getElement());
-			if (curr.getNext() == elem) {
+			if (curr.getElement() == elem) {
 				System.out.println("matched");
 				curr.setNext(curr.getNext().getNext());
+				return;
 			}
 //			System.out.println(curr.getElement());
 			curr = curr.getNext();
@@ -118,7 +124,7 @@ public class CLL<T> {
 		list.insert(4);
 		System.out.println(list.display());
 		System.out.println(list.getHead());
-		list.delete(2);
+		list.delete(3);
 		System.out.println(list.display());
 
 	}
