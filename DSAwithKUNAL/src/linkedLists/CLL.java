@@ -73,31 +73,48 @@ public class CLL<T> {
 
 	public void delete(T elem) {
 
+//		if (elem == getHead()) {
+//			head = head.getNext();
+//			tail.setNext(head);
+//			return;
+//		}
+//
+//		Node<T> curr = head;
+//
+//		if (curr == null) {
+//			return;
+//		}
+//
+//		do {
+//			if (curr.getNext().getElement() == elem) {
+//				System.out.println("matched");
+//				curr.setNext(curr.getNext().getNext());
+//				return;
+//			}
+//			curr = curr.getNext();
+//		} while (curr != tail);
+//		size--;
+
 		if (elem == getHead()) {
 			head = head.getNext();
 			tail.setNext(head);
 			return;
 		}
-//		if (elem == getTail()) {
-//			tail = head;
-//		}
+
 		Node<T> curr = head;
 
 		if (curr == null) {
 			return;
 		}
 
-		while (curr != tail) {
-//			System.out.println(curr.getElement());
-			if (curr.getElement() == elem) {
-				System.out.println("matched");
+		do {
+			if (curr.getNext().getElement() == elem) {
 				curr.setNext(curr.getNext().getNext());
-				return;
+				break;
 			}
-//			System.out.println(curr.getElement());
+
 			curr = curr.getNext();
-		}
-		size--;
+		} while (curr != tail);
 
 	}
 
@@ -106,12 +123,12 @@ public class CLL<T> {
 
 		Node<T> curr = head;
 
-		if (head != null) {
-			do {
+		do {
+			if (head != null) {
 				result.add(curr.getElement());
 				curr = curr.getNext();
-			} while (curr != head);
-		}
+			}
+		} while (curr != head);
 
 		return result;
 	}
@@ -124,7 +141,7 @@ public class CLL<T> {
 		list.insert(4);
 		System.out.println(list.display());
 		System.out.println(list.getHead());
-		list.delete(3);
+		list.delete(4);
 		System.out.println(list.display());
 
 	}
